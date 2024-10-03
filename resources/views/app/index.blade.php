@@ -130,7 +130,7 @@
     <div id="portfolio" class="text-center container-fluid bg-gray">
         <h2>Portfolio</h2>
         <h4>What we have created</h4>
-        <div class="row slideObject d-flex align-items-center justify-content-center">
+        <div class="row slideObject d-flex align-items-end justify-content-center">
             @foreach ($portfolios as $portfolio)
             <div class="col-md-4">
                 <img src="{{ asset('/storage/' . $portfolio->image) }}" class="mb-3 img-thumbnail">
