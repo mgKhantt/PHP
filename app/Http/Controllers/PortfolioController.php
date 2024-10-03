@@ -164,6 +164,7 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        //
+        Portfolio::where('id', $portfolio->id)->delete();
+        return response()->json("You have delete the record successfully");
     }
 }

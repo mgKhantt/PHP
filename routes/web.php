@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BladeTemplateController;
 use App\Http\Controllers\CSRFController;
@@ -31,9 +32,11 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::middleware(['locale'])->group(function () {
 
-    Route::get('/', function () {
-    return view('app.index');
-    });
+    // Route::get('/', function () {
+    //     return view('app.index');
+    // });
+
+    Route::get('/', [AppController::class, 'getIndex']);
 
     Route::prefix('admin')->group(function () {
 

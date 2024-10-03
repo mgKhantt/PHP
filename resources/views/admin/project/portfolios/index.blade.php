@@ -27,7 +27,8 @@
                 <td class="text-center">
                     <a href="{{url('/admin/portfolios/'.$row->id.'/edit')}}" class="btn btn-secondary m-1">Edit</a>
                     <a href="{{ url('/admin/portfolios/' . $row->id) }}" class="btn btn-info m-1">Details</a>
-                    <a href="{{ url('/admin/portfolios/' . $row->id) }}" class="btn btn-danger m-1">Delete</a>
+                    <button class="btn btn-danger btn-delete m-1" data-id="{{$row->id}}">Delete</button>
+
                 </td>
                 <td>
                     <img src="{{asset('storage/' . $row->image)}}" alt="portfolio_img" width="100px" height="100px" id="portfolio-img">
@@ -96,7 +97,7 @@
         function deleteRecord(id) {
             $.ajax({
                 type: "delete",
-                url: "/admin/users/" + id,
+                url: "/admin/portfolios/" + id,
                 data: {
                     "_token": "{{csrf_token()}}"
                 },
