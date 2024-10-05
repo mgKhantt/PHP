@@ -105,6 +105,7 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ url('/admin/users') }}">Users</a>
                         <a class="nav-link" href="{{ url('/admin/portfolios') }}">Portfolios</a>
+                        <a class="nav-link" href="{{ url('/admin/icons') }}">Icons</a>
                     </nav>
                 </div>
                 <!-- Project ends-->

@@ -90,21 +90,13 @@
         <h2>Our Services</h2>
         <h4>What we offer</h4>
         <div class="row slideObject">
+            @foreach ($icons as $icon)
             <div class="col-md-4">
-                <i class="fa-solid fa-power-off icon-sm"></i>
-                <h4>POWER</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
+                <img src="{{ asset('storage/' . $icon->icon) }}" alt="icon_img" style="width: 75px; height: 75px;" class="mb-2 icon-sm">
+                <h4>{{$icon->title}}</h4>
+                <p>{{$icon->description}}</p>
             </div>
-            <div class="col-md-4">
-                <i class="fa-solid fa-heart icon-sm"></i>
-                <h4>LOVE</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fa-solid fa-lock icon-sm"></i>
-                <h4>JOB DONE</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
+            @endforeach
         </div>
         <div class="row slideObject">
             <div class="col-md-4">

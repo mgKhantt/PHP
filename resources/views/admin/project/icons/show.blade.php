@@ -6,7 +6,7 @@
 @section('content')
 <h2>This is Detail page</h2>
 <div class="container-fluid">
-    <a href="{{url('/admin/portfolios')}}" class="btn btn-primary">Back</a>
+    <a href="{{url('/admin/icons')}}" class="btn btn-primary">Back</a>
 
     <table class="table">
         <thead>
@@ -17,10 +17,8 @@
         </thead>
         <tbody>
             <tr>
-                <td>Image</td>
-                <td>
-                    <img src="{{asset('storage/' . $data->image)}}" alt="image" width="100px">
-                </td>
+                <td>Icon</td>
+                <td><img src="{{asset('/storage/' . $data->icon)}}" alt="icon" width="100" height="100"></td>
             </tr>
             <tr>
                 <td>Title</td>

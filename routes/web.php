@@ -4,6 +4,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BladeTemplateController;
 use App\Http\Controllers\CSRFController;
+use App\Http\Controllers\IconController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\RoutingController;
 use App\Http\Controllers\SessionController;
@@ -115,10 +116,12 @@ Route::middleware(['locale'])->group(function () {
             Route::put('/users/reset-password/{id}', [UserController::class, 'resetPassword'])->name('users.reset-password');
             Route::resource('users', UserController::class);
 
-            // //Portfolios
-            // Route::resource('portfolios', PortfolioController::class);
+            //Portfolios
+            Route::resource('portfolios', PortfolioController::class);
+
+            //Icons
+            Route::resource('icons', IconController::class);
+
         });
-        //Portfolios
-        Route::resource('portfolios', PortfolioController::class);
     });
 });
