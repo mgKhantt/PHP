@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Icon;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class IconController extends Controller
@@ -95,7 +96,7 @@ class IconController extends Controller
      */
     public function edit(Icon $icon)
     {
-        //
+        return view('admin.project.icons.edit')->with('data', $icon);
     }
 
     /**
@@ -107,7 +108,50 @@ class IconController extends Controller
      */
     public function update(Request $request, Icon $icon)
     {
-        //
+        $hasFile = $request->hasFile('icon');
+
+        if($hasFile) {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    "icon" => 'required|image|mimes:svg,max:2048',
+                    "title" => 'required',
+                    "description" => 'required'
+                ]
+            );
+        } else {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    "title" => 'required',
+                    "description" => 'required'
+                ]
+            );
+        }
+        if($validator->fails()) {
+        return redirect('admin/icons/' . $icon->id . '/edit')
+        ->withErrors($validator)
+        ->withInput();
+        }
+
+        if ($hasFile) {
+            $imagePath = $request->file('icon')->store('icons', 'public');
+            Storage::delete('/public/' . $icon->icon);
+        }
+
+        $inputs = [];
+        
+        if ($hasFile) {
+            $inputs['icon'] = $imagePath;
+        }
+        $inputs['title'] = $request['title'];
+        $inputs['description'] = $request['description'];
+        $inputs['updated_by'] = auth()->user()->id;
+        $inputs['updated_at'] = Carbon::now();
+
+        Icon::where('id', $icon->id)->update($inputs);
+        session()->flash('message', 'You updated the record successfully');
+        return redirect('/admin/icons');
     }
 
     /**
@@ -118,6 +162,7 @@ class IconController extends Controller
      */
     public function destroy(Icon $icon)
     {
-        //
+        Icon::where('id', $icon->id)->delete();
+        return response()->json("You have delete the record successfully");
     }
 }

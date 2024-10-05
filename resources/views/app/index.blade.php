@@ -92,30 +92,12 @@
         <div class="row slideObject">
             @foreach ($icons as $icon)
             <div class="col-md-4">
-                <img src="{{ asset('storage/' . $icon->icon) }}" alt="icon_img" style="width: 75px; height: 75px;" class="mb-2 icon-sm">
+                <img src="{{ asset('storage/' . $icon->icon) }}" alt="icon_img" style="width: 75px; height: 75px;" class="mb-2" id="iconImg">
                 <h4>{{$icon->title}}</h4>
                 <p>{{$icon->description}}</p>
             </div>
             @endforeach
         </div>
-        <div class="row slideObject">
-            <div class="col-md-4">
-                <i class="fa-solid fa-leaf icon-sm"></i>
-                <h4>GREEN</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fa-solid fa-certificate icon-sm"></i>
-                <h4>CERTIFIED</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fa-solid fa-wrench icon-sm"></i>
-                <h4>HARD WORK</h4>
-                <p>Lorem ipsum dolor sit amet..</p>
-            </div>
-        </div>
-
     </div>
 
     <!-- portfolio -->
